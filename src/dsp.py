@@ -4,6 +4,7 @@ from data_paths import good_plots, bad_plots
 from os import listdir, path
 import numpy as np
 from multiprocessing import Pool, cpu_count
+import matplotlib.pyplot as plt
 
 
 def downsample(signal, old_sampling_rate, new_sampling_rate, method="fft",
@@ -56,7 +57,10 @@ if __name__ == '__main__':
     g = gfiles_[-1]
     b = bfiles_[0]
 
-    fs, st = scipy.io.wavfile.read(path.join(good_plots, b))
-    signal = downsample(st, fs, 4000)
-    spectrogram(signal)
+    print(g, b)
+    fs, st = scipy.io.wavfile.read(path.join(bad_plots, b))
+    new_hz = 4000
+    signal = downsample(st, fs, new_hz)
+
+    spectrogram(signal, new_hz)
     import ipdb; ipdb.set_trace()
