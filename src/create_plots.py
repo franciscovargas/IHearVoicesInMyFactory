@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from dateutil import parser
 
-from data_paths import bad_plots, good_plots, listdir, path
+from data_paths import bad_plots, good_plots
+from os import listdir, path
 
 
 def plot_signals(wav_dir):
